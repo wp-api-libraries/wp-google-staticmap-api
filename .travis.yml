@@ -12,6 +12,7 @@ branches:
 php:
   - 5.3
   - 5.6
+  - 7.0
 
 env:
   - WP_VERSION=latest WP_MULTISITE=0
@@ -37,3 +38,8 @@ before_script:
 script:
   - phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
   - phpunit
+addons:
+  code_climate:
+  repo_token:
+after_success:
+  - vendor/bin/test-reporter
